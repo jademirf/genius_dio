@@ -1,5 +1,6 @@
 let sequence = [];
 let clickedSequence = [];
+let score = 0;
 
 // 0 - green | 1 - red | 2 - yellow | 3 - blue
 
@@ -35,8 +36,8 @@ let lightColor = (element, number) => {
 
 let checkOrder = () => {
   for(let i in clickedSequence) {
-    if(clickedSequence[i] != order[i]) {
-      lose();
+    if(clickedSequence[i] != sequence[i]) {
+      gameOver();
       break;
     }
     if(clickedSequence.length == sequence.length) {
@@ -47,14 +48,15 @@ let checkOrder = () => {
 }
 
 let click = (color) => {
+  console.log('color: ', color)
   clickedSequence[clickedSequence.length] = color;
-  elementColor(color).classList.add('selected')
+  createColorElement(color).classList.add('selected')
 
  setTimeout(() => {
     createColorElement(color).classList.remove('selected')
-  })
+    checkOrder();
+  }, 250)
 
-  checkOrder();
 }
 
 // creates function to return color
@@ -76,3 +78,25 @@ let nextLevel = () => {
   score++;
   shufleOrder();
 }
+
+// game over function
+let gameOver = () => {
+  alert(`Pontuação: ${score}!\nYou lose!\nClick ok to start a new game.`)
+  sequence = [];
+  clickedSequence = [];
+
+  playGame();
+}
+
+// function to start a new gameOver
+let playGame = () => {
+  alert('Welcome to genius! \nStart a new game!')
+  score = 0
+
+  nextLevel()
+}
+
+green.addEventListener('click', () => click(0))
+red.addEventListener('click', () => click(1))
+yellow.addEventListener('click', () => click(2))
+blue.addEventListener('click', () => click(3))

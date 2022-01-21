@@ -28,7 +28,7 @@ let lightColor = (element, number) => {
   // add class selected
   setTimeout(() => {
     element.classList.add('selected')
-  }, number - 250)
+  }, number - 250);
 // remove class selected
   setTimeout(() => {
     element.classList.remove('selected')
@@ -38,18 +38,19 @@ let lightColor = (element, number) => {
 let checkOrder = () => {
   for(let i in clickedSequence) {
     if(clickedSequence[i] != sequence[i]) {
+      // debugger
       gameOver();
       break;
     }
-    if(clickedSequence.length == sequence.length) {
-      alert(`Parabéns!\n Pontuação: ${score}!`)
-      nextLevel();
-    }
+  }
+  if(clickedSequence.length == sequence.length) {
+    alert(`Parabéns!\n Pontuação: ${score}`)
+    nextLevel();
   }
 }
 
+// handle user click
 let click = (color) => {
-  console.log('color: ', color)
   clickedSequence[clickedSequence.length] = color;
   createColorElement(color).classList.add('selected')
 
@@ -97,9 +98,10 @@ let playGame = () => {
   nextLevel()
 }
 
-green.addEventListener('click', () => click(0))
-red.addEventListener('click', () => click(1))
-yellow.addEventListener('click', () => click(2))
-blue.addEventListener('click', () => click(3))
+green.onclick = () => click(0)
+red.onclick = () => click(1)
+yellow.onclick = () => click(2)
+blue.onclick = () => click(3)
 
+//start game
 playGame();

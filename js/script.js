@@ -22,6 +22,7 @@ let shufleOrder = () => {
   }
 }
 
+// lights the next color in sequence
 let lightColor = (element, number) => {
   number = number *500;
   // add class selected
@@ -31,7 +32,7 @@ let lightColor = (element, number) => {
 // remove class selected
   setTimeout(() => {
     element.classList.remove('selected')
-  }, number - 250)
+  }, number)
 }
 
 let checkOrder = () => {
@@ -88,7 +89,7 @@ let gameOver = () => {
   playGame();
 }
 
-// function to start a new gameOver
+// function to start a new game
 let playGame = () => {
   alert('Welcome to genius! \nStart a new game!')
   score = 0
@@ -100,3 +101,5 @@ green.addEventListener('click', () => click(0))
 red.addEventListener('click', () => click(1))
 yellow.addEventListener('click', () => click(2))
 blue.addEventListener('click', () => click(3))
+
+playGame();

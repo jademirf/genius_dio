@@ -1,4 +1,7 @@
-body{ background-color: #DDFFEE; margin: 0}
+body{ 
+  background-color: #DDFFEE; 
+  margin: 0;
+}
 
 main{
   height: 100vh;
@@ -25,16 +28,19 @@ main{
   background-color: green;
   border-top-left-radius: 100%;
 }
+
 #red{
   grid-area: red;
   background-color: red;
   border-top-right-radius: 100%;
 }
+
 #yellow{
   grid-area: yellow;
   background-color: yellow;
   border-bottom-left-radius: 100%;
 }
+
 #blue{
   grid-area: blue;
   background-color: blue;
@@ -42,5 +48,5 @@ main{
 }
 
 .selected{
-  opacity: 0.8;
+  opacity: 0.6;
 }
